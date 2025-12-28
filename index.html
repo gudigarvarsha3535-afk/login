@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<style>
+/* ===== GLOBAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #b388eb, #f8a5c2, #a29bfe);
+    overflow: hidden;
+}
+
+/* ===== BACKGROUND ILLUSTRATION ===== */
+.scene {
+    position: absolute;
+    inset: 0;
+}
+
+/* Moon */
+.moon {
+    position: absolute;
+    top: 8%;
+    right: 15%;
+    width: 120px;
+    height: 120px;
+    background: #fff5d6;
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(255, 245, 214, 0.6);
+}
+
+/* Stars */
+.star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.star:nth-child(1) { top: 15%; left: 20%; }
+.star:nth-child(2) { top: 25%; left: 60%; }
+.star:nth-child(3) { top: 18%; left: 75%; }
+.star:nth-child(4) { top: 30%; left: 40%; }
+
+/* Mountains */
+.mountain {
+    position: absolute;
+    bottom: -40px;
+    width: 120%;
+    height: 50%;
+    background: #6c5ce7;
+    clip-path: polygon(0 100%, 15% 45%, 35% 70%, 55% 35%, 75% 60%, 90% 40%, 100% 100%);
+}
+
+.mountain.back {
+    background: #8e7dff;
+    opacity: 0.7;
+    bottom: -70px;
+}
+
+/* ===== LOGIN CARD ===== */
+.container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 1.5s ease;
+}
+
+.login-card {
+    background: #fffaf3;
+    width: 350px;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+/* ===== TITLE ===== */
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #5d3fd3;
+}
+
+/* ===== INPUT FIELDS ===== */
+.input-box {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 40px;
+    border-radius: 25px;
+    border: none;
+    background: #ffe6ee;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.input-box input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(186, 104, 200, 0.6);
+}
+
+/* Icons */
+.input-box span {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #7b5dd6;
+}
+
+/* ===== OPTIONS ===== */
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+/* Toggle */
+.switch {
+    position: relative;
+    width: 36px;
+    height: 18px;
+}
+
+.switch input {
+    opacity: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 2px;
+    bottom: 2px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+    background: #b388eb;
+}
+
+.switch input:checked + .slider:before {
+    transform: translateX(18px);
+}
+
+/* Links */
+a {
+    color: #7b5dd6;
+    text-decoration: none;
+}
+
+/* ===== BUTTON ===== */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: #6c5ce7;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #5a4ad1;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(108, 92, 231, 0.4);
+}
+
+/* ===== CREATE ACCOUNT ===== */
+.create {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 400px) {
+    .login-card {
+        width: 90%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+    <div class="moon"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="mountain back"></div>
+    <div class="mountain"></div>
+</div>
+
+<div class="container">
+    <div class="login-card">
+        <h2>Login</h2>
+
+        <div class="input-box">
+            <span>👤</span>
+            <input type="text" placeholder="Username">
+        </div>
+
+        <div class="input-box">
+            <span>🔒</span>
+            <input type="password" placeholder="Password">
+        </div>
+
+        <div class="options">
+            <label style="display:flex; align-items:center; gap:8px;">
+                
+            </label>
+           
+        </div>
+
+        <button>Login</button>
+
+        
+    </div>
+</div>
+
+<script>
+function login() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const message = document.getElementById("message");
+
+    if (username === "admin" && password === "1234") {
+        message.style.color = "green";
+        message.innerHTML = "Login Successful ✔";
+    } else {
+        message.style.color = "red";
+        message.innerHTML = "Invalid Username or Password ✖";
+    }
+}
+</script>
+
+
+</body>
+</html>
